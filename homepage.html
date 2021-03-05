@@ -1,0 +1,876 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <title>Bobo Bird Africa site</title>
+
+
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+<style>
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.topSection {
+  width: 100%;
+  float: left;
+  height: 100%;
+  overflow: hidden;
+}
+.topSection .logo {
+  width: 250px;
+  position: absolute;
+  float: left;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  top: 90%;
+  margin-top: -250px;
+  margin-left: -125px;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  transform: scale(0.5);
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+.topSection .logo.start {
+  transform: scale(1);
+  opacity: 1;
+  top: 50%;
+}
+.topSection.open {
+  pointer-events: none;
+}
+.topSection.open .logo {
+  transform: scale(0.7) !important;
+  top: 10px !important;
+  margin-top: -50px !important;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.topSection.open .half {
+  transform: translateX(-100%);
+}
+.topSection.open .half:nth-child(odd) {
+  transform: translateX(100%);
+}
+.topSection .half {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  float: left;
+  background-color: #fff;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+.topSection .half .area {
+  width: 70%;
+  margin: 0px 15% 0px 15%;
+  float: left;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+}
+.topSection .half .area .hiddenText {
+  width: 100%;
+  float: left;
+  padding: 50px 0px 10px 0px;
+  transform: translateX(150px);
+  opacity: 0;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.topSection .half .area .hiddenText h1 {
+  font-family: "Raleway", sans-serif;
+  width: 100%;
+  float: left;
+  margin: 0px;
+  font-weight: 100;
+  font-size: 25pt;
+  color: #D4AF37;
+}
+.topSection .half .area .hiddenText a {
+  font-family: "Raleway", sans-serif;
+  width: 100%;
+  float: left;
+  margin: 10px 0px 0px 0px;
+  font-size: 15px;
+  color: #777;
+  padding-left: 0px;
+  position: relative;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+}
+.topSection .half .area .hiddenText a:after {
+  content: "";
+  position: absolute;
+  width: 0px;
+  background-color: #D4AF37;
+  height: 1px;
+  float: left;
+  left: 0;
+  top: 50%;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+}
+.topSection .half .area .hiddenText a:hover {
+  padding-left: 55px;
+}
+.topSection .half .area .hiddenText a:hover:after {
+  width: 50px;
+}
+.topSection .half .area img {
+  width: 100%;
+  float: left;
+  position: absolute;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+  top: 5%;
+  bottom: auto;
+}
+.topSection .half .area:hover .hiddenText {
+  transform: translateX(0px);
+  opacity: 1;
+  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.topSection .half .area:hover img {
+  top: 50%;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.topSection .half:nth-child(odd) {
+  background-color: #eee;
+}
+.topSection .half:nth-child(odd) .hiddenText {
+  padding: 10px 0px 50px 0px;
+  transform: translateX(-150px);
+  bottom: 0;
+  position: absolute;
+  opacity: 0;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.topSection .half:nth-child(odd) .hiddenText h1 {
+  text-align: right;
+  color: #d43737;
+}
+.topSection .half:nth-child(odd) .hiddenText a {
+  text-align: right;
+  float: right;
+  padding-left: 0px;
+}
+.topSection .half:nth-child(odd) .hiddenText a:after {
+  content: "";
+  position: absolute;
+  width: 0px;
+  background-color: #d43737;
+  height: 1px;
+  float: left;
+  right: 0 !important;
+  left: auto;
+  top: 50%;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+}
+.topSection .half:nth-child(odd) .hiddenText a:hover {
+  padding-left: 0px;
+  padding-right: 55px;
+}
+.topSection .half:nth-child(odd) .hiddenText a:hover:after {
+  width: 50px;
+}
+.topSection .half:nth-child(odd) img {
+  top: auto;
+  bottom: 5% !important;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+}
+.topSection .half:nth-child(odd) .area:hover img {
+  top: auto !important;
+  bottom: 50% !important;
+}
+
+.store {
+  float: left;
+  max-height: 0px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  padding: 150px 50px 50px 50px;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+  width: 1200px;
+  left: 50%;
+  margin-left: -600px;
+}
+.store.open {
+  max-height: 1000000000000px;
+  min-height: 100%;
+  opacity: 1;
+  z-index: 1;
+  pointer-events: all;
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+.store .menu {
+  font-size: 19pt;
+  color: #777;
+  width: 40px;
+  text-align: center;
+  height: 40px;
+  padding-top: 4px;
+  position: fixed;
+  z-index: 100000;
+  top: 0px;
+  right: 50px;
+  border: 2px solid #777;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+}
+.store .menu:hover {
+  color: #d43737;
+  cursor: pointer;
+  border: 2px solid #d43737;
+}
+.store h2 {
+  font-family: "Raleway", sans-serif;
+  width: 100%;
+  float: left;
+  margin: 0px;
+  font-weight: 100;
+  font-size: 20pt;
+  margin: 0px 0px 20px 0px;
+  text-transform: uppercase;
+  letter-spacing: 15px;
+  color: #D4AF37;
+}
+
+.itemHolder {
+  float: left;
+  position: relative;
+  width: 100%;
+}
+
+.item {
+  width: 23%;
+  margin: 10px 1% 20px 1%;
+  float: left;
+  padding: 10px;
+  background: #f2f2f3;
+  position: relative;
+  display: none;
+}
+.item.visible {
+  display: block;
+}
+.item a {
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+.item h3 {
+  font-size: 10pt;
+  text-align: left;
+  float: left;
+  width: 100%;
+  position: absolute;
+  font-family: "Raleway", sans-serif;
+  bottom: 0px;
+  font-weight: 100;
+  padding: 1px 5px 1px 25px;
+  color: rgba(0, 0, 0, 0);
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.item h3:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  float: left;
+  width: 40px;
+  left: -20px;
+  background: #1a1a1a;
+  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+}
+.item h4 {
+  position: absolute;
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  color: #fff;
+  padding: 5px;
+  font-weight: 100;
+  background: #D4AF37;
+  right: 0;
+  top: 0;
+}
+.item h5 {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  font-size: 70pt;
+  color: #fff;
+  opacity: 0;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+.item img {
+  width: 90%;
+  margin: 0px 5% 0px 5%;
+  float: left;
+}
+.item img:last-child {
+  display: none;
+}
+.item:hover {
+  cursor: pointer;
+}
+.item:hover img {
+  display: none;
+}
+.item:hover img:last-child {
+  display: block;
+}
+.item:hover h5 {
+  opacity: 0.4;
+}
+.item:hover h3 {
+  color: #fff !important;
+  z-index: 1000;
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+  padding: 1px 5px 1px 5px;
+}
+.item:hover h3:before {
+  content: "";
+  width: 105%;
+  left: -20px;
+  background: #1a1a1a;
+  z-index: -11;
+}
+
+@media screen and (max-width: 1200px) {
+  .store {
+    width: 100%;
+    left: 0%;
+    margin-left: 0px;
+  }
+
+  .item {
+    width: 31.33%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .item {
+    width: 44%;
+    margin: 10px 2% 10px 2%;
+  }
+}
+@media screen and (max-width: 580px) {
+  .item {
+    width: 80%;
+    margin: 10px 10% 10px 10%;
+  }
+}
+@media screen and (max-width: 420px) {
+  .item {
+    width: 98%;
+    margin: 10px 1% 10px 1%;
+  }
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+
+
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <div class="topSection">
+  <img class="logo" src="bobologo.png">
+
+  <div class="half">
+    <div class="area">
+      <img src="https://images.unsplash.com/photo-1500956432890-5e23e45754d8?dpr=1&auto=compress,format&fit=crop&w=1199&h=1799&q=80&cs=tinysrgb&crop=&bg=">
+      <div class="hiddenText">
+        <h1>Women</h1>
+        <a class="dresses_w">Wooden Watches</a>
+        <a class="skirts_w">Normal Watches</a>
+        <a class="shirts_w">Sunglasses</a>
+        <a class="jackets_w">Optical Frames</a>
+        <!--         <a class="scarves_w">Scarves</a> -->
+
+      </div>
+    </div>
+  </div>
+
+  <div class="half">
+
+    <div class="area">
+      <img src="https://images.unsplash.com/photo-1492447166138-50c3889fccb1?dpr=1&auto=compress,format&fit=crop&w=1199&h=1798&q=80&cs=tinysrgb&crop=&bg=">
+      <div class="hiddenText">
+        <a class="tees_m">Wooden Watches</a>
+        <a class="shirts_m">Metallic Watches</a>
+        <!--         <a class="sock_m">Socks</a> -->
+        <a class="jackets_m">Sunglasses</a>
+        <a class="hats_m">optical Frames</a>
+        <h1>Men</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="store">
+    <p class="menu"><i class="fa fa-bars" aria-hidden="true"></i></p>
+    <h2 class="catTitle">Wooden Watches</h2>
+    <div class="itemHolder">
+
+
+
+      <!--Item Start-->
+      <div class="item dresses_w">
+        <a href="https://instagram.com/bobobird_africa?igshid=5tkgq7737f7z" target="_blank">
+          <div class="images">
+            <img src="https://scontent.fnbo9-1.fna.fbcdn.net/v/t1.0-9/91021440_119648193003481_681855006319575040_n.jpg?_nc_cat=105&ccb=3&_nc_sid=09cbfe&_nc_eui2=AeHZclYr3PHvvAgCi4Fe6rcPExYbV88qCQYTFhtXzyoJBgS41uBRFLfC0gGT7qfuDOWkyWUSNPvLPPjIDeTDrMSw&_nc_ohc=TQQhOxyn-I0AX9U7aw-&_nc_ht=scontent.fnbo9-1.fna&oh=c5349dd9752125c439e9cef22bee694f&oe=60611070">
+            <img src="https://scontent.fnbo9-1.fna.fbcdn.net/v/t1.0-9/91021440_119648193003481_681855006319575040_n.jpg?_nc_cat=105&ccb=3&_nc_sid=09cbfe&_nc_eui2=AeHZclYr3PHvvAgCi4Fe6rcPExYbV88qCQYTFhtXzyoJBgS41uBRFLfC0gGT7qfuDOWkyWUSNPvLPPjIDeTDrMSw&_nc_ohc=TQQhOxyn-I0AX9U7aw-&_nc_ht=scontent.fnbo9-1.fna&oh=c5349dd9752125c439e9cef22bee694f&oe=60611070">
+          </div>
+          <h3><i>ModelNumber</i><br>short description</h3>
+          <h4>KSH,4500</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+      <!--Item Start-->
+      <div class="item dresses_w">
+        <a href="https://instagram.com/bobobird_africa?igshid=5tkgq7737f7z" target="_blank">
+          <div class="images">
+            <img src="https://scontent.fnbo10-1.fna.fbcdn.net/v/t1.0-9/149242996_247981613503471_1514040404025173060_n.jpg?_nc_cat=102&ccb=3&_nc_sid=8bfeb9&_nc_eui2=AeGclLllHzo6zoRL5Ihjl5Usm-JXmos5lUSb4leaizmVRByEyqoQV9RsXOWVhNAij4Cnp7AGXs6C3WtUlA51Ax8p&_nc_ohc=jT_Q5dDSLUEAX-fFbvO&_nc_oc=AQnhiWu8xpZHDLxGLl--SBYZB5QinQdVqusxSOSIDt62Wf8sHyjwWdkgAK_YYJHhdFk&_nc_ht=scontent.fnbo10-1.fna&oh=64a2587cc6e19e3c01f02b3710a516e1&oe=6063F323">
+            <img src="https://scontent.fnbo10-1.fna.fbcdn.net/v/t1.0-9/149242996_247981613503471_1514040404025173060_n.jpg?_nc_cat=102&ccb=3&_nc_sid=8bfeb9&_nc_eui2=AeGclLllHzo6zoRL5Ihjl5Usm-JXmos5lUSb4leaizmVRByEyqoQV9RsXOWVhNAij4Cnp7AGXs6C3WtUlA51Ax8p&_nc_ohc=jT_Q5dDSLUEAX-fFbvO&_nc_oc=AQnhiWu8xpZHDLxGLl--SBYZB5QinQdVqusxSOSIDt62Wf8sHyjwWdkgAK_YYJHhdFk&_nc_ht=scontent.fnbo10-1.fna&oh=64a2587cc6e19e3c01f02b3710a516e1&oe=6063F323">
+          </div>
+          <h3><i>ModelNumber</i><br>short description</h3>
+          <h4>KSH,3800</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+      <!--Item Start-->
+      <div class="item dresses_w">
+        <a href="https://instagram.com/bobobird_africa?igshid=5tkgq7737f7z" target="_blank">
+          <div class="images">
+            <img src="https://scontent.fnbo10-1.fna.fbcdn.net/v/t1.0-9/148594704_247981636836802_3832553904886622839_n.jpg?_nc_cat=106&ccb=3&_nc_sid=8bfeb9&_nc_eui2=AeEyqbFDDTlfeQwDMOiJtjKc5OnDna7FYqLk6cOdrsVios_nvNTENp8QKCFD3QCuKosEKeW8lZO0DwidtIDQLAyJ&_nc_ohc=WQXsC5I3suYAX_lYCF2&_nc_ht=scontent.fnbo10-1.fna&oh=1212ce689211c93ec832d8dc3e3a2212&oe=6063BC3F">
+            <img src="https://scontent.fnbo10-1.fna.fbcdn.net/v/t1.0-9/148594704_247981636836802_3832553904886622839_n.jpg?_nc_cat=106&ccb=3&_nc_sid=8bfeb9&_nc_eui2=AeEyqbFDDTlfeQwDMOiJtjKc5OnDna7FYqLk6cOdrsVios_nvNTENp8QKCFD3QCuKosEKeW8lZO0DwidtIDQLAyJ&_nc_ohc=WQXsC5I3suYAX_lYCF2&_nc_ht=scontent.fnbo10-1.fna&oh=1212ce689211c93ec832d8dc3e3a2212&oe=6063BC3F">
+          </div>
+          <h3><i>ModelNumber</i><br>short description</h3>
+          <h4>KSH,5600</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+
+      <!--Item Start-->
+      <div class="item skirts_w">
+        <a href="http://www.pacsun.com/pacsun/destructed-light-denim-mini-skirt-0840445380053.html?cgid=womens-skirts&dwvar_0840445380053_color=510&start=4" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw5b5462ce/product_images/0840445380053NEW_00_510.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwd4fbafde/product_images/0840445380053NEW_01_510.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>PacSun</i><br> Denim Mini Skirt</h3>
+          <h4>$61</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+      <!--Item Start-->
+      <div class="item skirts_w">
+        <a href="http://www.pacsun.com/lisakai/stripe-woven-mini-skirt-0840498110007.html?cgid=womens-skirts&start=23&dwvar_0840498110007_color=091" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw1d2054f0/product_images/0840498110007NEW_00_091.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwb7cdaa1d/product_images/0840498110007NEW_01_091.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>Lisakai</i><br> Stripe Woven Mini Skirt</h3>
+          <h4>$23</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+      <!--Item Start-->
+      <div class="item skirts_w">
+        <a href="http://www.pacsun.com/pacsun/destructed-black-denim-skirt-0840103680021.html?dwvar_0840103680021_color=001&cgid=womens-skirts&start=1" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw8b67b376/product_images/0840103680021NEW_00_001.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwc8b538ea/product_images/0840103680021NEW_01_001.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>PacSun</i><br> Destructed Black Denim Skirt</h3>
+          <h4>$61</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+
+      <!--Item Start-->
+      <div class="item tees_m">
+        <a href="http://www.pacsun.com/obey/tune-out-premium-t-shirt-0097502750302.html?cgid=mens-graphic-tees&start=23&dwvar_0097502750302_color=628" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw24159a6a/product_images/0097502750302NEW_00_628.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw26fb3423/product_images/0097502750302NEW_01_628.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>OBEY</i><br> Tune Out Premium T-Shirt</h3>
+          <h4>$39</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+      <!--Item Start-->
+      <div class="item tees_m">
+        <a href="http://www.pacsun.com/civil/kesh-fist-drop-t-shirt-0097460120124.html?cgid=mens-graphic-tees&dwvar_0097460120124_color=010&start=40" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw05d1a037/product_images/0097460120124NEW_00_010.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwbe0d0622/product_images/0097460120124NEW_01_010.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>Civil</i><br> Kesh Fist Drop T-Shirt</h3>
+          <h4>$45</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+      <!--Item Start-->
+      <div class="item tees_m">
+        <a href="http://www.pacsun.com/young-reckless/starboard-t-shirt-0098201220402.html?cgid=mens-graphic-tees&dwvar_0098201220402_color=041&start=52" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw102d7f98/product_images/0098201220402NEW_00_041.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwbe5b77d0/product_images/0098201220402NEW_01_041.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>Young & Reckless</i><br> Starboard T-Shirt</h3>
+          <h4>$38</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+      <!--Item Start-->
+      <div class="item tees_m">
+        <a href="http://www.pacsun.com/brixton/newport-t-shirt-0097440200367.html?cgid=mens-graphic-tees&start=120&dwvar_0097440200367_color=619" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw0979a9d2/product_images/0097440200367NEW_00_619.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwb27579c9/product_images/0097440200367NEW_01_619.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>Brixton</i><br> Newport T-Shirt</h3>
+          <h4>$42</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+      <!--Item Start-->
+      <div class="item shirts_m">
+        <a href="http://www.pacsun.com/pacsun/rocket-pop-short-sleeve-button-up-shirt-0180250500176.html?cgid=mens-shirts&dwvar_0180250500176_color=040&start=1" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw66a6180b/product_images/0180250500176NEW_00_040.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw81a187ad/product_images/0180250500176NEW_01_040.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>PacSun</i><br> Rocket Pop Short Sleeve</h3>
+          <h4>$53</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+      <!--Item Start-->
+      <div class="item shirts_m">
+        <a href="http://www.pacsun.com/pacsun/dead-isle-short-sleeve-button-up-camp-shirt-0180250500173.html?cgid=mens-shirts&start=7&dwvar_0180250500173_color=040" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwd201e21a/product_images/0180250500173NEW_00_040.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwa5471c32/product_images/0180250500173NEW_01_040.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>PacSun</i><br> Dead Isle Short Sleeve</h3>
+          <h4>$53</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+      <!--Item Start-->
+      <div class="item jackets_m">
+        <a href="http://www.pacsun.com/pacsun/tri-moto-zip-pu-jacket-0201491920045.html?cgid=mens-jackets&start=64&dwvar_0201491920045_color=001" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw908a05c0/product_images/0201491920045NEW_01_001.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwf05808cd/product_images/0201491920045NEW_02_001.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>PacSun</i><br> Tri Moto Zip PU Jacket</h3>
+          <h4>$62</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+      <!--Item Start-->
+      <div class="item jackets_m">
+        <a href="http://www.pacsun.com/puma/super-puma-t7-track-jacket-0201497750017.html?dwvar_0201497750017_color=001&cgid=mens-jackets&start=8" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwa7b8c390/product_images/0201497750017NEW_00_001.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw150b4ff3/product_images/0201497750017NEW_01_001.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>Puma</i><br> Super Puma T7 Track Jacket</h3>
+          <h4>$122</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+      <!--Item Start-->
+      <div class="item hats_m">
+        <a href="http://www.pacsun.com/huf/surfs-down-volley-strapback-hat-0641503380098.html?cgid=mens-hats-and-beanies&dwvar_0641503380098_color=619&start=68" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw3c4ad9f3/product_images/0641503380098NEW_00_619.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw7a6b4859/product_images/0641503380098NEW_01_619.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>HUF</i><br> Surfs Down Volley Strapback Hat</h3>
+          <h4>$52</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+          <!--Item Start-->
+      <div class="item hats_m">
+        <a href="http://www.pacsun.com/huf/triple-triangle-camouflage-snapback-trucker-hat-0641503380126.html?cgid=mens-hats-and-beanies&start=71&dwvar_0641503380126_color=835" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw0d5039b9/product_images/0641503380126NEW_00_835.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwaddddfaf/product_images/0641503380126NEW_01_835.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>HUF</i><br> Triple Triangle Camouflage</h3>
+          <h4>$45</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+          <!--Item Start-->
+      <div class="item hats_m">
+        <a href="http://www.pacsun.com/nike-sb/performance-trucker-hat-0641236759243.html?cgid=mens-hats-and-beanies&dwvar_0641236759243_color=001&start=111&dwvar_0641236759243_size=9900" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw669c938f/product_images/0641236759243NEW_01_001.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwf35d8174/product_images/0641236759243NEW_00_001.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>Nike SB</i><br> Performance Trucker Hat</h3>
+          <h4>$46</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+          <!--Item Start-->
+      <div class="item hats_m">
+        <a href="http://www.pacsun.com/good-worth/pass-it-strapback-hat-0641509350008.html?dwvar_0641509350008_color=389&cgid=mens-hats-and-beanies&start=155" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw5665d156/product_images/0641509350008NEW_00_389.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw010681cf/product_images/0641509350008NEW_01_389.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>Good Worth</i><br> Pass It Strapback Hat</h3>
+          <h4>$38</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+          <!--Item Start-->
+      <div class="item hats_m">
+        <a href="http://www.pacsun.com/neff/neffection-snapback-hat-0641480020003.html?cgid=mens-hats-and-beanies&dwvar_0641480020003_color=046&start=185" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw1b5e6823/product_images/0641480020003NEW_00_046.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw1b793b48/product_images/0641480020003NEW_01_046.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>Neff</i><br> Neffection Snapback Hat</h3>
+          <h4>$27</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+
+          <!--Item Start-->
+      <div class="item shirts_w">
+        <a href="http://www.pacsun.com/kendall-kylie/keyhole-off-the-shoulder-top-0731461580177.html?cgid=womens-tops&start=4&dwvar_0731461580177_color=710&dwvar_0731461580177_size=9100" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw7e221256/product_images/0731461580177NEW_00_710.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw5697f0c0/product_images/0731461580177NEW_01_710.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>Kendall & Kylie</i><br> Keyhole Off-The-Shoulder Top</h3>
+          <h4>$50</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+           <!--Item Start-->
+      <div class="item shirts_w">
+        <a href="http://www.pacsun.com/kendall-kylie/lace-up-off-the-shoulder-top-0731462870157.html?cgid=womens-tops&dwvar_0731462870157_size=9400&start=34&dwvar_0731462870157_color=011" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwafce10d4/product_images/0731462870157NEW_00_011.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw2c9ed5a9/product_images/0731462870157NEW_01_011.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>Kendall & Kylie</i><br> Lace-Up Off-The Shoulder Top</h3>
+          <h4>$41</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+           <!--Item Start-->
+      <div class="item jackets_w">
+        <a href="http://www.pacsun.com/adidas/london-hooded-jacket-0760000250063.html?cgid=womens-outerwear&start=5&dwvar_0760000250063_color=060" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw5e91ca31/product_images/0760000250063NEW_00_060.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw1f66f374/product_images/0760000250063NEW_01_060.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>adidas</i><br> London Hooded Jacket</h3>
+          <h4>$130</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+
+           <!--Item Start-->
+      <div class="item jackets_w">
+        <a href="http://www.pacsun.com/adidas/chita-windbreaker-0760000250065.html?cgid=womens-outerwear&start=3&dwvar_0760000250065_color=089" target="_blank">
+          <div class="images">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dwcc482805/product_images/0760000250065NEW_00_089.jpg?sw=340&sh=528&sm=fit">
+            <img src="http://demandware.edgesuite.net/sits_pod15/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw4b09b89d/product_images/0760000250065NEW_01_089.jpg?sw=340&sh=528&sm=fit">
+          </div>
+          <h3><i>adidas</i><br> Chita Windbreaker</h3>
+          <h4>$130</h4>
+          <h5><i class="fa fa-external-link" aria-hidden="true"></i></h5>
+        </a>
+      </div>
+      <!--Item End-->
+      <div>
+
+      </div>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js'></script>
+      <script id="rendered-js" >
+$(document).ready(function () {
+  introAnimtions();
+
+
+
+  $('.hiddenText a').click(function () {
+    var textVal = $(this).text();
+    var classVal = $(this).attr('class');
+
+    var subString = "_w";
+    if (classVal.indexOf(subString) !== -1) {
+      $('.catTitle').html("Women's " + textVal);
+    } else {
+      $('.catTitle').html("Men's " + textVal);
+    }
+
+
+
+    $('.store .item').removeClass('visible');
+    $('.store .item.' + classVal).addClass('visible');
+
+
+    $('.topSection').addClass('open');
+    $('.store').addClass('open');
+    alignItems();
+  });
+
+
+  $('.store .menu').click(function () {
+    $('.topSection').removeClass('open');
+    $('.store').removeClass('open');
+
+  });
+
+
+
+});
+
+function introAnimtions() {
+  $(".topSection .logo").addClass('start');
+}
+
+function alignItems() {
+  //   var winW = $('.itemHolder').width();
+  //   var itemPerRow = Math.floor((winW)/ $('.item').width());
+
+  //   if(itemPerRow < 1){
+  //     itemPerRow = 1;
+  //   }
+
+  //  var margin = ((winW - $('.item').width()*itemPerRow) / 2) ;
+
+  //   $('.item').css('margin-left',margin+'px');
+  //   $('.item').css('margin-right',margin+'px');
+
+
+  console.log(margin);
+  $('.item.visible').each(function () {
+    // var randNum = Math.floor((Math.random() * 30) + 1);
+    // $(this).css('margin-top',randNum+'px')
+  });
+}
+//# sourceURL=pen.js
+    </script>
+
+
+
+</body>
+
+</html>
