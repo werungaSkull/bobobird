@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang='en' class=''>
+
+<head>
+
+  <meta charset='UTF-8'>
+  <title>CodePen Demo</title>
+
+  <meta name="robots" content="noindex">
+
+  <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+  <link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+  <link rel="canonical" href="https://codepen.io/Vany/pen/krxjC">
+
+
+
+
+  <style class="INLINE_PEN_STYLESHEET_ID">
+    body {background: #27ae60;}
+#repair-animation{
+  margin: 100px;
+
+}
+#repair-animation *{
+  position: absolute;
+}
+#repair-saw {
+  width: 206px;
+  height: 46px;
+  background: url(http://rghost.ru/50205827/image.png);
+  transform: rotate(-10deg);
+  z-index: 4;
+  animation: sawmove linear 8s infinite;
+}
+#repair-item1 {
+  width: 9px;
+  height: 200px;
+  background: #34495e;
+  margin: 0 0 0 100px;
+  z-index: 3;
+  animation: opacity50 linear 8s infinite;
+}
+#repair-item2 {
+  width: 9px;
+  height: 200px;
+  background: #2c3e50;
+  margin: 0 0 0 100px;
+  z-index: 5;
+  animation: dropitem linear 8s infinite;
+}
+#repair-item3 {
+  width: 150px;
+  height: 200px;
+  background: #34495e;
+  animation: opacity100 linear 8s infinite;
+  margin: 0 0 0 100px;
+  opacity: 0;
+}
+@keyframes sawmove {
+  0% {
+    margin: -40px 0 0 30px;
+    transform: rotate(-11deg);
+  }
+  4% {
+    margin: 0px 0 0 -20px;
+    transform: rotate(-6deg);
+  }
+  8% {
+    margin: 20px 0 0 35px;
+    transform: rotate(-12deg);
+  }
+  12% {
+    margin: 40px 0 0 -22px;
+    transform: rotate(-7deg);
+  }
+  16% {
+    margin: 60px 0 0 35px;
+    transform: rotate(-12deg);
+  }
+  20% {
+    margin: 80px 0 0 -25px;
+    transform: rotate(-6deg);
+  }
+  24% {
+    margin: 100px 0 0 32px;
+    transform: rotate(-11deg);
+  }
+  27% {
+    margin: 120px 0 0 -25px;
+    transform: rotate(-7deg);
+  }
+  32% {
+    margin: 140px 0 0 32px;
+    transform: rotate(-12deg);
+  }
+  37% {
+    margin: 160px 0 0 -25px;
+    transform: rotate(-7deg);
+  }
+  37% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+}
+@keyframes dropitem {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg);
+    margin: 0 0 0 100px;
+  }
+  4% {opacity: 1;}
+  37% {
+    opacity: 1;
+    margin: 0 0 0 100px;
+    transform: rotate(0deg);
+  }
+  47% {
+  opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    margin: 200px 0 0 0;
+    transform: rotate(-30deg);
+  }
+  97% {
+    opacity: 0;
+  }
+  100% {
+  }
+}
+@keyframes opacity50 {
+  48% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 0;}
+}
+@keyframes opacity100 {
+  43% {opacity: 0;}
+  47% {opacity: 1;}
+  96% {opacity: 1;}
+}
+.screw {
+  width: 100px;
+  height: 55px;
+  background: #2c3e50;
+  position: absolute;
+  border-radius: 3px;
+}
+.screw:before {
+  content: "";
+  position: absolute;
+  top: -29.5px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 30px solid #2c3e50;
+}
+
+.screw:after {
+  content: "";
+  position: absolute;
+  bottom: -29.4px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 30px solid #2c3e50;
+}
+@keyframes screw1 {
+ 47% {opacity: 0;}
+ 50% {transform: rotate(15deg) scale(1); opacity: 1;}
+ 62% {transform: rotate(600deg) scale(.4);}
+ 96% {transform: rotate(600deg) scale(.4); opacity: 1;}
+ 100% {transform: rotate(600deg) scale(.4);}
+}
+@keyframes screw2 {
+ 50% {transform: rotate(15deg) scale(1);}
+ 59% {opacity: 0;}
+ 62% {transform: rotate(15deg) scale(1); opacity: 1;}
+ 74% {transform: rotate(500deg) scale(.4);}
+ 96% {transform: rotate(500deg) scale(.4); opacity: 1;}
+ 100% {transform: rotate(600deg) scale(.4);}
+}
+@keyframes screw3 {
+ 50% {transform: rotate(15deg) scale(1);}
+ 71% {opacity: 0;}
+ 74% {transform: rotate(15deg) scale(1); opacity: 1;}
+ 86% {transform: rotate(500deg) scale(.4);}
+ 96% {transform: rotate(500deg) scale(.4); opacity: 1;}
+ 100% {transform: rotate(600deg) scale(.4);}
+}
+@keyframes screw4 {
+ 50% {transform: rotate(15deg) scale(1);}
+ 83% {opacity: 0;}
+ 86% {transform: rotate(15deg) scale(1); opacity: 1;}
+ 96% {transform: rotate(500deg) scale(.4); opacity: 1;}
+ 100% {transform: rotate(600deg) scale(.4);}
+}
+.one {
+  animation: screw1 8s infinite;
+  top: 100px;
+  left: 185px;
+  opacity: 0;
+}
+
+.two {
+  animation: screw2 8s infinite;
+  left: 280px;
+  top: 100px;
+  opacity: 0;
+}
+
+.three {
+  animation: screw3 8s infinite;
+  top: 240px;
+  left: 185px;
+  opacity: 0;
+}
+
+.four {
+  animation: screw4 8s infinite;
+  left: 280px;
+  top: 240px;
+  opacity: 0;
+}
+
+  </style>
+
+
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-7f4d47902dc785f30dedcac9c996b9f31d4dfcc33567cc48f0431bc918c2bf05.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-bb9a2ba1f03f6147732cb3cd52ac86c6b24524aa87a05ed0b726f11e46d7e277.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+</head>
+
+<body>
+  <div id="repair-animation">
+  <div id="repair-saw"></div>
+  <div id="repair-item1"></div>
+  <div id="repair-item2"></div>
+  <div id="repair-item3"></div>
+  <div class="screw one"></div>
+  <div class="screw two"></div>
+  <div class="screw three"></div>
+  <div class="screw four"></div>
+</div>
+
+<div position="absolute"><pre>
+<h1 align="center">
+
+
+
+
+
+
+  OOPS!!!</h1>
+<h2 align="center">This website is under repair until April
+
+                           ~ <i>Regards |Werunga|.</i>
+  </h2
+</pre></div>
+
+
+
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+  <script  src="https://cdpn.io/cp/internal/boomboom/pen.js?key=pen.js-5bca3ae5-7dfb-771f-47db-b21468080800" crossorigin></script>
+</body>
+
+</html>
